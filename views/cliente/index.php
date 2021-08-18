@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+Yii::$container->set('yii\grid\ActionColumn', ['header' => 'Ações']);
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ClienteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -15,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Cliente', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Cadastrar Cliente', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -24,15 +26,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            // ['class' => 'yii\grid\SerialColumn'],
             'nome',
             'email:email',
             'cpf',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'headerOptions' => [
+                    'style' => 'color:#007bff'
+                ] 
+            ],
         ],
+        'layout' => "{items}\n{pager}",
     ]); ?>
 
 
