@@ -7,6 +7,8 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ProdutoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
+Yii::$container->set('yii\grid\ActionColumn', ['header' => 'Ações']);
+
 $this->title = 'Produtos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Produto', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Cadastrar Produto', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -24,15 +26,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'nome',
             'preco',
             'quantidade',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'headerOptions' => [
+                    'style' => 'color:#007bff'
+                ] 
+            ],
         ],
+        'layout' => "{items}\n{pager}",
     ]); ?>
 
 
