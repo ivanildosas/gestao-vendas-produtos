@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Pedido', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Cadastrar Pedido', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -24,14 +24,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'id_cliente',
             'valor',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'headerOptions' => [
+                    'style' => 'color:#007bff'
+                ] 
+            ],
         ],
+        'layout'=>"{items}\n{summary}\n{pager}",
+        'emptyText' => 'Nenhum registro encontrado!',
+    	'summary' => 'Exibindo {begin}-{end} de {count} registro(s).',
     ]); ?>
 
 

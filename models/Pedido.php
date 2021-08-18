@@ -44,8 +44,8 @@ class Pedido extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'id_cliente' => 'Id Cliente',
+            'id' => 'Código',
+            'id_cliente' => 'Cliente',
             'valor' => 'Valor',
         ];
     }

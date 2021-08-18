@@ -38,7 +38,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 ] 
             ],
         ],
-        'layout' => "{items}\n{pager}",
+        'layout'=>"{items}\n{summary}\n{pager}",
+        'emptyText' => 'Nenhum registro encontrado!',
+    	'summary' => 'Exibindo {begin}-{end} de {count} registro(s).',
     ]); ?>
 
 
