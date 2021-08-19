@@ -16,6 +16,10 @@ use Yii;
  */
 class Pedido extends \yii\db\ActiveRecord
 {
+    
+    private $idProduto = null;
+    private $qtdProduto = 1;
+
     /**
      * {@inheritdoc}
      */
@@ -69,4 +73,27 @@ class Pedido extends \yii\db\ActiveRecord
     {
         return $this->hasMany(PedidoProduto::className(), ['id_pedido' => 'id']);
     }
+
+    public function getIdProduto()
+    {
+        return $this->idProduto;
+    }
+
+    public function setIdProduto($idProduto)
+    {
+        $this->idProduto = $idProduto;
+    }
+
+    public function getQtdProduto()
+    {
+        return $this->qtdProduto;
+    }
+
+    public function setQtdProduto($qtdProduto)
+    {
+        $this->qtdProduto = $qtdProduto;
+    }
+
+    
+
 }
